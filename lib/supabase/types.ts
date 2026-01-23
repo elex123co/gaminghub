@@ -1,0 +1,60 @@
+export type UserRole = 'admin' | 'user';
+
+export interface Profile {
+  id: string;
+  username: string;
+  avatar_url: string | null;
+  role: UserRole;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface LandingContent {
+  id: string;
+  section_key: string;
+  title: string | null;
+  subtitle: string | null;
+  content: any;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Group {
+  id: string;
+  name: string;
+  description: string | null;
+  avatar_url: string | null;
+  created_by: string | null;
+  is_public: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface GroupMember {
+  id: string;
+  group_id: string;
+  user_id: string;
+  joined_at: string;
+}
+
+export interface Message {
+  id: string;
+  group_id: string;
+  sender_id: string;
+  content: string;
+  created_at: string;
+  sender?: Profile;
+}
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string | null;
+  author_id: string | null;
+  published_at: string | null;
+  created_at: string;
+  updated_at: string;
+  author?: Profile;
+}
