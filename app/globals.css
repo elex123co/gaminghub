@@ -5,23 +5,15 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 240 10% 3.9%;
+    --border: 240 5.9% 90%;
   }
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 0 0% 3.9%;
-      --foreground: 0 0% 98%;
-    }
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
