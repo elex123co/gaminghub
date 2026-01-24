@@ -4,11 +4,14 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
+import { supabase } from '@/lib/supabase/client';
 
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [country, setCountry] = useState('');
+  const [city, setCity] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { signUp } = useAuth();
@@ -21,6 +24,16 @@ export default function SignUpPage() {
 
     try {
       await signUp(email, password, username);
+      
+      // Update profile with location data
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        await supabase
+          .from('profiles')
+          .update({ country, city })
+          .eq('id', user.id);
+      }
+      
       router.push('/community');
     } catch (err: any) {
       setError(err.message || 'Failed to sign up');
@@ -97,6 +110,42 @@ export default function SignUpPage() {
                 placeholder="••••••••"
                 minLength={6}
               />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2"
+                >
+                  Country
+                </label>
+                <input
+                  id="country"
+                  type="text"
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-2 focus:ring-zinc-900 dark:focus:ring-white focus:border-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
+                  placeholder="e.g., Nigeria"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="city"
+                  className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2"
+                >
+                  City
+                </label>
+                <input
+                  id="city"
+                  type="text"
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  className="w-full px-4 py-2 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-2 focus:ring-zinc-900 dark:focus:ring-white focus:border-transparent bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white"
+                  placeholder="e.g., Lagos"
+                />
+              </div>
             </div>
 
             <button
