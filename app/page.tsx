@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { supabase } from '@/lib/supabase/client';
 import { LandingContent } from '@/lib/supabase/types';
 
@@ -115,13 +114,10 @@ export default function Home() {
             <div className="mb-8 flex justify-center">
               <div className="relative w-64 h-64 md:w-80 md:h-80">
                 <div className="absolute inset-0 bg-purple-500 blur-3xl opacity-50 animate-pulse"></div>
-                <Image
-                  src="/gaming-hub-logo.jpg"
+                <img
+                  src="https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769257314/gaming-hub-logo_zl6ctu.jpg"
                   alt="The Gaming Hub Logo"
-                  width={320}
-                  height={320}
-                  className="relative z-10 drop-shadow-2xl"
-                  priority
+                  className="relative z-10 drop-shadow-2xl w-full h-full object-contain"
                 />
               </div>
             </div>
