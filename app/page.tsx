@@ -115,7 +115,7 @@ export default function Home() {
               <div className="relative w-64 h-64 md:w-80 md:h-80">
                 <div className="absolute inset-0 bg-purple-500 blur-3xl opacity-50 animate-pulse"></div>
                 <img
-                  src="https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769257314/gaming-hub-logo_zl6ctu.jpg"
+                  src="https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769257603/gaming-hub-logo-removebg-preview_u4y6pt.png"
                   alt="The Gaming Hub Logo"
                   className="relative z-10 drop-shadow-2xl w-full h-full object-contain"
                 />
