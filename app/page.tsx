@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase/client';
 import { LandingContent } from '@/lib/supabase/types';
+import Leaderboard from '@/components/Leaderboard';
 
 export default function Home() {
   const [content, setContent] = useState<Record<string, LandingContent>>({});
@@ -115,7 +116,7 @@ export default function Home() {
               <div className="relative w-64 h-64 md:w-80 md:h-80">
                 <div className="absolute inset-0 bg-purple-500 blur-3xl opacity-50 animate-pulse"></div>
                 <img
-                  src="https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769257603/gaming-hub-logo-removebg-preview_u4y6pt.png"
+                  src="https://i.postimg.cc/sxQwmNhm/the-gaming-hub-logo.jpg"
                   alt="The Gaming Hub Logo"
                   className="relative z-10 drop-shadow-2xl w-full h-full object-contain"
                 />
@@ -309,6 +310,21 @@ export default function Home() {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Leaderboard Section */}
+      <section className="py-20 bg-black">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+              Hall of Champions
+            </h2>
+            <p className="text-xl text-gray-400">
+              Celebrating our tournament winners and top performers
+            </p>
+          </div>
+          <Leaderboard />
         </div>
       </section>
 

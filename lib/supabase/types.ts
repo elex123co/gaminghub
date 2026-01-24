@@ -5,6 +5,8 @@ export interface Profile {
   username: string;
   avatar_url: string | null;
   role: UserRole;
+  country: string | null;
+  city: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -68,4 +70,27 @@ export interface DirectMessage {
   created_at: string;
   sender?: Profile;
   recipient?: Profile;
+}
+
+export interface Game {
+  id: string;
+  name: string;
+  description: string | null;
+  icon_url: string | null;
+  created_at: string;
+}
+
+export interface LeaderboardEntry {
+  id: string;
+  user_id: string;
+  game_id: string;
+  tournament_name: string;
+  position: number;
+  prize: string | null;
+  score: string | null;
+  date_achieved: string;
+  created_at: string;
+  updated_at: string;
+  user?: Profile;
+  game?: Game;
 }
