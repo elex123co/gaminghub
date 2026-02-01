@@ -6,6 +6,23 @@ import { supabase } from '@/lib/supabase/client';
 import { LandingContent } from '@/lib/supabase/types';
 import Leaderboard from '@/components/Leaderboard';
 
+interface FeatureItem {
+  title: string;
+  description: string;
+}
+
+interface StepItem {
+  title: string;
+  description: string;
+}
+
+interface ContentData {
+  cta?: string;
+  description?: string;
+  features?: FeatureItem[];
+  steps?: StepItem[];
+}
+
 export default function Home() {
   const [content, setContent] = useState<Record<string, LandingContent>>({});
   const [loading, setLoading] = useState(true);
@@ -22,7 +39,7 @@ export default function Home() {
 
       if (error) throw error;
 
-      const contentMap = data.reduce((acc, item) => {
+      const contentMap = data.reduce((acc: Record<string, LandingContent>, item: LandingContent) => {
         acc[item.section_key] = item;
         return acc;
       }, {} as Record<string, LandingContent>);
@@ -51,12 +68,30 @@ export default function Home() {
   ];
 
   const partners = [
-    'Metacene',
-    'Engy Africa',
-    'Gacom',
-    'Escape The Matrix',
-    'Vikuverse',
-    'Carry1st',
+    {
+      name: 'Metacene',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769960394/WhatsApp_Image_2026-01-27_at_20.15.23_oiovg3.jpg',
+    },
+    {
+      name: 'Engy Africa',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769960395/engy_ag5hrd.png',
+    },
+    {
+      name: 'Gacom',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769431558/splash_zinyl6.png',
+    },
+    {
+      name: 'Escape The Matrix',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769961379/WhatsApp_Image_2026-02-01_at_16.52.05_nuyzzq.jpg',
+    },
+    {
+      name: 'Vikuverse',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769961379/WhatsApp_Image_2026-02-01_at_16.52.05_nuyzzq.jpg',
+    },
+    {
+      name: 'Carry1st',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769960395/WhatsApp_Image_2026-01-27_at_20.12.37_fbnkhm.jpg',
+    },
   ];
 
   const benefits = [
@@ -212,11 +247,19 @@ export default function Home() {
             {partners.map((partner, idx) => (
               <div
                 key={idx}
-                className="bg-white/5 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 flex items-center justify-center hover:bg-white/10 hover:border-purple-500 transition"
+                className="bg-white/5 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 flex items-center justify-center hover:bg-white/10 hover:border-purple-500 transition min-h-[120px]"
               >
-                <span className="text-center font-semibold text-gray-300">
-                  {partner}
-                </span>
+                {partner.logo ? (
+                  <img
+                    src={partner.logo}
+                    alt={partner.name}
+                    className="w-full h-20 object-contain"
+                  />
+                ) : (
+                  <span className="text-center font-semibold text-gray-300">
+                    {partner.name}
+                  </span>
+                )}
               </div>
             ))}
           </div>
