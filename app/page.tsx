@@ -82,7 +82,7 @@ export default function Home() {
     },
     {
       name: 'Escape The Matrix',
-      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769961379/WhatsApp_Image_2026-02-01_at_16.52.05_nuyzzq.jpg',
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769961379/WhatsApp_Image_2026-02-01_at_16.52.16_fs2hxv.jpg',
     },
     {
       name: 'Vikuverse',
