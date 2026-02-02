@@ -95,8 +95,7 @@ export default function Home() {
     {
       name: 'Nexal gaming' ,
       logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1770049563/nexal-white_1_zkasjv.png'
-    }
-     
+    },
   ];
 
   const benefits = [
