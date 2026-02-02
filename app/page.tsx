@@ -92,6 +92,11 @@ export default function Home() {
       name: 'Carry1st',
       logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1769960395/WhatsApp_Image_2026-01-27_at_20.12.37_fbnkhm.jpg',
     },
+    {
+      name: 'Nexal gaming' ,
+      logo: 'https://res.cloudinary.com/dtd4ehd1s/image/upload/v1770049563/nexal-white_1_zkasjv.png'
+    }
+     
   ];
 
   const benefits = [
